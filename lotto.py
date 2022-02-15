@@ -14,15 +14,14 @@ random_numbers = random.sample(all_numbers, 6)
 print(random_numbers)
 
 while is_six==False:
-    number = input("input number: ")
-    result1 = number.isdigit()
-    if result1 == True:
+    number = input("Pass number from 1 to 49: ")
+    result = number.isdigit()
+    if result == True:
         number = int(number)
         if  number>=1 and number<50:
             picked_numbers.append(number)
-            count_numbers+=1
-            print('Dozwolona liczba!')
-    if count_numbers == 6:
+            picked_numbers = list(set(picked_numbers))
+    if len(picked_numbers) == 6:
         is_six = True
 hit = 0
 for x in range(6):
@@ -30,8 +29,10 @@ for x in range(6):
         if picked_numbers[x] == random_numbers[y]:
             hit+=1
 if(hit==0):
-    print('Nic nie trafiłeś ;(')
-elif(hit>=1 and hit<6):
-    print('Trafileś ', hit, ' liczb!')
+    print('Nothing! ;(')
+elif(hit==1):
+    print('You hit 1 number!')
+elif(hit>1 and hit<6):
+    print('You hit ',hit, ' numbers!')
 else:
-    print('Trafiłeś 6 woow!!')
+    print('JACKPOOOOT!')
